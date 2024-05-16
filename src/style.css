@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ts {
+    overflow-x: scroll; 
+    scrollbar-width: none; 
+  }
+  
+  .ts::-webkit-scrollbar { 
+    opacity: 0;
+  }
+  
