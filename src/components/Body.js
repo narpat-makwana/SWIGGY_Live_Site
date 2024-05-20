@@ -1,22 +1,23 @@
-import Card from "./Card";
+import Card, { withPromoted } from "./Card";
 import React, { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import WhatsOnMind from "./WhatsOnMind";
 import useOnlineStatus from "./useOnlineStatus";
-import useFetch from "./useFetch"
+import useFetch from "./useFetch";
 
 const Body = () => {
-
   // const {restList,filteredRestList} = useFetch(resId);
 
   const [restList, setRestList] = useState([]);
   const [filteredRestList, setFilteredRestList] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  const ResPromoted = withPromoted(Card);
+
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -69,7 +70,7 @@ const Body = () => {
         <Shimmer />
         <Shimmer />
         <Shimmer />
-        <Shimmer />    
+        <Shimmer />
       </div>
     );
   }
@@ -84,7 +85,10 @@ const Body = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <button className="m-4 bg-orange-400 rounded-full p-2 " onClick={SearchHandle}>
+        <button
+          className="m-4 bg-orange-400 rounded-full p-2 "
+          onClick={SearchHandle}
+        >
           Search
         </button>
       </div>
@@ -95,9 +99,11 @@ const Body = () => {
         </button>
       </div>
 
-        <WhatsOnMind />
+      <WhatsOnMind />
 
-      <h1 className="mx-24 p-4 text-2xl font-bold">Restaurants with online food delivery in Pune</h1>
+      <h1 className="mx-24 p-4 text-2xl font-bold">
+        Restaurants with online food delivery in Pune
+      </h1>
       <div className="flex flex-wrap mx-28 mt-4">
         {filteredRestList.map((restaurant) => {
           return (
@@ -106,8 +112,12 @@ const Body = () => {
               to={"/restaurants/" + restaurant?.info?.id}
               style={{ textDecoration: "none", color: "black" }}
             >
-              {" "}
-              <Card resData={restaurant?.info} />{" "}
+              {restaurant.info.availability.opened ? (
+                <ResPromoted resData={restaurant?.info} />
+              ) : (
+                <Card resData={restaurant?.info} />
+              )}
+              {/* <Card resData={restaurant?.info} /> */}
             </Link>
           );
         })}

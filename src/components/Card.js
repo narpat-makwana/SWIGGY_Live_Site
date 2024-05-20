@@ -34,4 +34,20 @@ const Card = (props) => {
   );
 };
 
+
+
+
+export const withPromoted = (Card) => {
+  return (props) => {
+    return (
+     <div>
+       <label className='absolute ml-7 mt-2 p-1 bg-slate-950 text-white rounded-lg'>Open</label>
+       <Card {...props} />
+     </div>
+      
+    );
+  };
+};
+ 
+
 export default Card;
