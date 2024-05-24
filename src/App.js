@@ -9,10 +9,10 @@ import { RouterProvider,RouterProvider,Outlet} from "react-router-dom";
 import Contact from "./components/contact";
 import Error from "./components/Error";
 import RestrauntMenu from "./components/RestaurantMenu";
-// import Grocery from "./components/Grocery";
+// import Grocery from "./components/Grocery";            
 
 const Grocery = lazy(() => import("./components/Grocery"));
-const About = lazy(() => import("./components/About"));
+const About = lazy(() => import("./components/About"));     
 
 const AppLayout = () => {
     return (
