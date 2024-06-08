@@ -1,4 +1,7 @@
+import {useContext} from "react";
+import UserContext from '../UserContext'
 const Footer = () => {
+  const {loggedInUser} = useContext(UserContext);
     return (
       <>
         <div className="bg-slate-800 text-center font-bold text-white">
@@ -17,6 +20,7 @@ const Footer = () => {
   
         <div className="bg-slate-800 pt-4 text-center text-white">
           <p>&copy; 2024 Pune Foods MH12. All rights reserved.</p>
+          {loggedInUser}
         </div>
       </>
     )
