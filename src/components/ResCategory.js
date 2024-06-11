@@ -1,5 +1,6 @@
 import CategoryList from "./CategoryList";
 import { useState } from "react";
+import { Fragment } from "react";
 
 const ResCategory = ({ data,isOpen,setShowIndex }) => {
   // const [isOpen, setIsOpen] = useState(false); // Initial state: CategoryList visible
@@ -24,7 +25,7 @@ const ResCategory = ({ data,isOpen,setShowIndex }) => {
         </div>
       </div>
       <div className="mx-36 px-12">
-          {isOpen && <CategoryList list={data.itemCards} />}
+          {isOpen && data.itemCards && (<CategoryList list={data.itemCards} />)}
       </div>
     </>
   );

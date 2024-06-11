@@ -36,7 +36,7 @@ const RestrauntMenu = () => {
     <>
       <div className="w-6/12 items-center m-auto ">
         <h1 className="text-3xl font-extrabold my-4 mx-4">{name}</h1>
-        <div className="w-full flex flex-col border-2 rounded-3xl m-0 p-4 shadow-xl">
+        <div className="-2 rw-full flex flex-col borderounded-3xl m-0 p-4 shadow-xl">
           <h6 className="font-medium p-2">
             ⭐ {avgRatingString} ({totalRatingsString}) 🔸 {costForTwoMessage}
           </h6>
